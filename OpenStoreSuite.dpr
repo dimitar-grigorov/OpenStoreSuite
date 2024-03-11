@@ -6,7 +6,9 @@ uses
   DataModule in 'Common\DataModules\DataModule.pas' {DM: TDataModule},
   OSS_CommonConstants in 'Common\OSS_CommonConstants.pas',
   LogFrameUnit in 'Common\LogFrame\LogFrameUnit.pas' {LogFrame: TFrame},
-  OSS_CommonInterfaces in 'Common\Interfaces\OSS_CommonInterfaces.pas';
+  OSS_CommonInterfaces in 'Common\Interfaces\OSS_CommonInterfaces.pas',
+  BaseFrameUnit in 'Common\BaseForms\BaseFrameUnit.pas' {BaseFrame: TFrame},
+  UserListFrameUnit in 'AppModules\Users\UserListFrameUnit.pas' {UserListFrame: TFrame};
 
 {$R *.res}
 
