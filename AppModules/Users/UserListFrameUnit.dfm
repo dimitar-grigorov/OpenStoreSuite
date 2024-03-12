@@ -17,26 +17,31 @@ inherited UserListFrame: TUserListFrame
       item
         Expanded = False
         FieldName = 'user_id'
+        Title.Caption = 'ID'
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'user_name'
+        Title.Caption = 'User Name'
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'address'
+        Title.Caption = 'Address'
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'created_on'
+        Title.Caption = 'Created On'
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'is_active'
+        Title.Caption = 'Active'
         Visible = True
       end>
   end

@@ -6,7 +6,7 @@ uses
   Classes, DB;
 
 type
-  TOssPersistenObject = class(TInterfacedPersistent)
+  TBaseOssPersistenObject = class(TInterfacedPersistent)
   private
     FOwner: TObject;
   public
@@ -15,7 +15,7 @@ type
     property Owner: TObject read FOwner write FOwner;
   end;
 
-  TOssDbObject = class(TOssPersistenObject)
+  TBaseOssDbObject = class(TBaseOssPersistenObject)
   private
     FIsActive: Boolean;
   protected
@@ -24,9 +24,9 @@ type
     constructor Create(aOwner: TObject = nil); override;  
     destructor Destroy; override;
     procedure Initialize; virtual;
-    procedure LoadFromDataset(aDS: TDataSet); virtual; abstract;
+    procedure LoadFromDataset(aDS: TDataSet); virtual;
 
-    procedure LoadFromDB(const aID: string); virtual; abstract;
+    procedure LoadFromDB(const aID: Integer); virtual;
     procedure CheckData; virtual;
     procedure SaveToDB; virtual;
     procedure DeleteFromDB; virtual; abstract;
@@ -41,7 +41,7 @@ uses
 
 { TOssPersistenObject }
 
-constructor TOssPersistenObject.Create(aOwner: TObject);
+constructor TBaseOssPersistenObject.Create(aOwner: TObject);
 begin
   inherited Create;
   FOwner := aOwner;
@@ -49,29 +49,34 @@ end;
 
 { TOssDbObject }
 
-constructor TOssDbObject.Create(aOwner: TObject);
+constructor TBaseOssDbObject.Create(aOwner: TObject);
 begin
   inherited Create(aOwner);
   Initialize;
 end;
 
-destructor TOssDbObject.Destroy;
+destructor TBaseOssDbObject.Destroy;
 begin
   //
   inherited;
 end;
 
-procedure TOssDbObject.Initialize;
+procedure TBaseOssDbObject.Initialize;
 begin
   FIsActive := True;
 end;
 
-procedure TOssDbObject.CheckData;
+procedure TBaseOssDbObject.LoadFromDataset(aDS: TDataSet);
+begin
+  FIsActive := aDS.FieldByName('is_active').AsInteger = 1;
+end;
+
+procedure TBaseOssDbObject.CheckData;
 begin
   // Nothig to do here for now.
 end;
 
-procedure TOssDbObject.SaveToDB;
+procedure TBaseOssDbObject.SaveToDB;
 begin
   CheckData;
   try
@@ -85,6 +90,11 @@ begin
       raise;
     end;
   end;
+end;
+
+procedure TBaseOssDbObject.LoadFromDB(const aID: Integer);
+begin
+  Initialize;
 end;
 
 end.

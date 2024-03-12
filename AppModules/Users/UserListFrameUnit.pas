@@ -43,7 +43,7 @@ end;
 
 procedure TUserListFrame.RefreshData;
 const
-  lcSQL = 'SELECT user_id, user_name, address FROM users;';
+  lcSQL = 'SELECT user_id, user_name, address, created_on, is_active FROM users;';
 var
   lvCursor: TCursor;
 begin
