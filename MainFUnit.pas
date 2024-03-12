@@ -98,7 +98,7 @@ end;
 
 procedure TMainF.actRefreshFromDbExecute(Sender: TObject);
 begin
-  Self.RefreshFromDb
+  Self.RefreshFromDb;
 end;
 
 end.

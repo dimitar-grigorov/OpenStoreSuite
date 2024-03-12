@@ -8,7 +8,8 @@ uses
   LogFrameUnit in 'Common\LogFrame\LogFrameUnit.pas' {LogFrame: TFrame},
   OSS_CommonInterfaces in 'Common\Interfaces\OSS_CommonInterfaces.pas',
   BaseFrameUnit in 'Common\BaseForms\BaseFrameUnit.pas' {BaseFrame: TFrame},
-  UserListFrameUnit in 'AppModules\Users\UserListFrameUnit.pas' {UserListFrame: TFrame};
+  UserListFrameUnit in 'AppModules\Users\UserListFrameUnit.pas' {UserListFrame: TFrame},
+  OSS_BaseClasses in 'Common\Classes\Base\OSS_BaseClasses.pas';
 
 {$R *.res}
 
